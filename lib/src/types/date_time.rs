@@ -108,9 +108,11 @@ mod tests {
 
     #[test]
     fn should_serialize_a_datetime() {
-        let date: BoltDateTime = DateTime::parse_from_rfc2822("Wed, 24 Jun 2015 12:50:35 +0100")
-            .unwrap()
-            .into();
+        let date: BoltDateTime = chrono::DateTime::<chrono::FixedOffset>::parse_from_rfc2822(
+            "Wed, 24 Jun 2015 12:50:35 +0100",
+        )
+        .unwrap()
+        .into();
 
         assert_eq!(
             date.into_bytes(Version::V4_1).unwrap(),

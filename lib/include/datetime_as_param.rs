@@ -1,6 +1,6 @@
-{ 
+{
     //send datetime as parameter in the query
-    let datetime = chrono::DateTime::parse_from_rfc2822("Tue, 01 Jul 2003 10:52:37 +0200").unwrap();
+    let datetime = chrono::DateTime::<chrono::FixedOffset>::parse_from_rfc2822("Tue, 01 Jul 2003 10:52:37 +0200").unwrap();
 
     let mut result = graph
         .execute(query("RETURN $d as output").param("d", datetime))
